@@ -1,0 +1,6 @@
+Setting A Plymouth
+1 Open Terminal Then Install plymouth By sudo pacman -S plymouth Run sudo nano /etc/default/grub Then Change GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 quiet" to GRUB_CMDLINE_LINUX_DEFAULT="quiet splash" Then Update grub using sudo grub-mkconfig -o /boot/grub/grub.cfg
+2 On Spinner Change watermark.png arch linux to Fallback Linux By sudo cp /usr/share/pixmaps/fallback-linux-logo.png /usr/share/plymouth/themes/spinner/watermark.png
+3 List Plymouth Themes On sudo plymouth-set-default-theme --list
+4 Set Your Desired Theme By sudo plymouth-set-default-theme yourtheme Then sudo mkinitcpio -P
+5 Reboot To Test
