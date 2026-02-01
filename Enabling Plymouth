@@ -4,3 +4,14 @@ Setting A Plymouth
 3 List Plymouth Themes On sudo plymouth-set-default-theme --list
 4 Set Your Desired Theme By sudo plymouth-set-default-theme yourtheme Then sudo mkinitcpio -P
 5 Reboot To Test
+
+Customizing Plymouth
+
+Breeze-text
+1 Run sudo nano /usr/share/plymouth/themes/breeze-text/breeze-text.plymouth
+2 If You See title=Arch Linux Change It To title=Fallback Linux
+3 Rebuild initramfs
+  sudo mkinitcpio -P
+
+Fallback Linux Recommend To Use Tribar Theme Because Its Fallback Linux Default And Recommended Plymouth Theme
+Set It Using sudo plymouth-set-default-theme tribar Then sudo mkinitcpio -P
