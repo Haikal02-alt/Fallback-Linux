@@ -1,0 +1,83 @@
+1 Download Arch Linux Iso From https://fastly.mirror.pkgbuild.com/iso/2026.01.01/
+2 Flash The Arch Linux Iso Using BalenaEtcher Rufus DD Mode Or Ventoy
+3 Boot from your Arch ISO
+4 Verify Internet
+  ping archlinux.org
+5 Partition Disk
+  fdisk /dev/sda
+  Create root partition (/dev/sda1).
+
+  Create swap partition (/dev/sda2).
+
+  Write changes.
+
+  Format
+  mkfs.ext4 /dev/sda1
+  mkswap /dev/sda2
+  swapon /dev/sda2
+
+6 Mount Filesystem
+  mount /dev/sda1 /mnt
+  mkdir /mnt/boot
+7 Install Base System (with LTS kernel)
+  pacstrap /mnt base linux-lts linux-firmware vim nano
+  Add extras: grub, networkmanager.
+8 Generate fstab
+  genfstab -U /mnt >> /mnt/etc/fstab
+9 Chroot Into System
+  arch-chroot /mnt
+10 Timezone
+   ln -sf /usr/share/zoneinfo/Asia/Makassar /etc/localtime
+   hwclock --systohc
+11 Locales
+   Edit /etc/locale.gen using sudo nano /etc/locale.gen
+   en_US.UTF-8 UTF-8
+   id_ID.UTF-8 UTF-8
+   Generate
+   locale-gen
+   Set default
+   echo "LANG=en_US.UTF-8" > /etc/locale.conf
+12 Set A Hostname For Example
+   echo "fallback-linux" > /etc/hostname
+   Edit /etc/hosts using sudo nano /etc/hosts
+   127.0.0.1   localhost
+   ::1         localhost
+   127.0.1.1   fallback-linux.localdomain fallback-linux
+13 Root Password
+   sudo passwd root
+14 Create A User Account For Example
+   useradd -m -G wheel -s /bin/bash muhammad
+   passwd muhammad
+   Enable sudo
+   EDITOR=nano visudo
+   Uncomment
+   %wheel ALL=(ALL) ALL
+15 Bootloader
+   For BIOS
+   pacman -S grub
+   grub-install --target=i386-pc /dev/sda
+   grub-mkconfig -o /boot/grub/grub.cfg
+   For UEFI
+   pacman -S grub efibootmgr
+   grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
+   grub-mkconfig -o /boot/grub/grub.cfg
+16 Install A Network For Example
+   pacman -S networkmanager
+   systemctl enable NetworkManager
+17 Exit And Reboot
+   exit
+   umount -R /mnt
+   reboot
+18 Install Fastfetch using sudo pacman -S fastfetch
+19 Install nano using sudo pacman -S nano
+20 Run sudo nano /etc/os-release
+   Then Change NAME="Arch Linux" To NAME="Fallback Linux"
+   Then Change PRETTY_NAME="Arch Linux" To PRETTY_NAME="Fallback Linux"
+   Change ID=arch to ID=fallback
+   Change HOME_URL="https://archlinux.org/" To HOME_URL="https://github.com/Haikal02-alt/Fallback-Linux"
+   Exit using ctrl x y enter
+21 Enter sudo nano /etc/default/grub
+   Change GRUB_DISTRIBUTOR="Arch" To GRUB_DISTRIBUTOR="Fallback"
+   ctrl x y enter Then Update Grub Using sudo grub-mkconfig -o /boot/grub/grub.cfg
+
+22 Have Fun And Start Using It
