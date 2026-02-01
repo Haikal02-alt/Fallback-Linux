@@ -1,0 +1,67 @@
+To install Graphical Environment You First Need To Install Network Manager by using sudo pacman -S networkmanager
+After You install network manager you can install desktop environment you like gnome kde plasma etc
+After You install Graphical Environment Install Firefox Or Konqueror
+Firefox
+sudo pacman -S firefox
+Konqueror
+sudo pacman -S konqueror
+You Download Fallback Linux Logo On Readme In This Website https://github.com/Haikal02-alt/Fallback-Linux
+Then Save The fallback linux On Browser By Click Save Image As Then If You See 543367371-e46b4a24-7c35-4013-afa6-99b4902334c7.png Change It To fallback-linux-logo.png Then Save it to Download
+Then Open Terminal And Run sudo mv /home/yourusername/Downloads/fallback-linux-logo.png /usr/share/pixmaps/
+Then sudo cp /usr/share/pixmaps/fallback-linux-logo.png /usr/share/pixmaps/archlinux-logo.png
+Then sudo cp /usr/share/pixmaps/fallback-linux-logo.png /usr/share/pixmaps/archlinux-logo.svg
+Then sudo cp /usr/share/pixmaps/fallback-linux-logo.png /usr/share/pixmaps/archlinux-logo-text.svg
+Then sudo cp /usr/share/pixmaps/fallback-linux-logo.png /usr/share/pixmaps/archlinux-logo-text-dark.svg
+Then sudo nano /etc/os-release Then Change LOGO=archlinux-logo to LOGO=/usr/share/pixmaps/fallback-linux-logo.png (FOR KDE PLASMA)
+After You Install Kde Plasma You Install the konsole and dolphin
+For Kde Plasma Go To System settings Then Notifications Then System Notifications Then Play A Sound On Login And Logout
+
+Installing A Desktop Environments
+
+Gnome
+sudo pacman -S gnome-extra
+KDE Plasma
+sudo pacman -S plasma
+Cinnamon
+sudo pacman -S cinnamon
+XFCE
+sudo pacman -S xfce4
+LXQt
+sudo pacman -S lxqt
+LXDE
+sudo pacman -S lxde
+MATE
+sudo pacman -S mate mate-extra
+
+Popular Tiling & Lightweight Window Managers
+
+Hyprland (Wayland compositor)
+sudo pacman -S hyprland
+Sway (Wayland i3-like compositor)
+sudo pacman -S sway
+i3wm
+sudo pacman -S i3-wm i3status dmenu
+MangoWM (community/AUR, not in official repos)  
+Install via AUR helper (e.g., yay)
+yay -S mangowm
+IceWM
+sudo pacman -S icewm
+
+Display Manager
+SDDM
+sudo pacman -S sddm
+sudo systemctl enable sddm
+GDM3
+sudo pacman -S gdm
+sudo systemctl enable gdm
+LightDM
+sudo pacman -S lightdm lightdm-gtk-greeter
+sudo systemctl enable lightdm
+
+Manual Start
+XFCE
+exec startxfce4
+GNOME
+exec gnome-session
+Then Run
+startx
