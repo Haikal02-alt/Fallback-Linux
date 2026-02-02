@@ -79,5 +79,8 @@
 21 Enter sudo nano /etc/default/grub
    Change GRUB_DISTRIBUTOR="Arch" To GRUB_DISTRIBUTOR="Fallback"
    ctrl x y enter Then Update Grub Using sudo grub-mkconfig -o /boot/grub/grub.cfg
+22 Install plymouth By sudo pacman -S plymouth Run sudo nano /etc/default/grub Then Change GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 quiet" to GRUB_CMDLINE_LINUX_DEFAULT="quiet splash" Then Update grub using sudo grub-mkconfig -o /boot/grub/grub.cfg
+   Fallback Linux Recommend To Use Tribar Theme Because Its Fallback Linux Default And Recommended Plymouth Theme
+   Set It Using sudo plymouth-set-default-theme tribar Then sudo mkinitcpio -P
 
-22 Have Fun And Start Using It
+23 Have Fun And Start Using It
